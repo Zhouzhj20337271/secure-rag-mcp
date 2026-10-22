@@ -1,0 +1,63 @@
+{
+  "principal_id": "engineer-demo",
+  "query": "数据库连接池指标正常，失败发生在客户端握手并提示证书到期；不要扩大连接池，如何恢复？",
+  "retrieval_mode": "hybrid_rerank",
+  "result_count": 3,
+  "results": [
+    {
+      "document_id": "ops-002",
+      "chunk_id": "ops-002-c001",
+      "title": "证书过期 ERR_TLS_410 排查手册",
+      "content": "# 证书过期 ERR_TLS_410 排查手册\n\n本文属于虚构企业演示数据。ERR_TLS_410 表示入口网关的 TLS 证书已过期。用户可能遇到浏览器证书告警或客户端握手失败；此错误与数据库连接池无关。\n\n先检查证书到期时间与完整证书链，通过证书管理平台续签并加载新证书，最后检查外部握手是否成功。不得通过关闭证书校验恢复业务。",
+      "score": 2.347712516784668,
+      "retrieval_mode": "hybrid_rerank",
+      "clearance_level": "internal",
+      "source": "data/mock_docs/ops-002.md",
+      "tenant_id": "aster-demo",
+      "department": "engineering",
+      "allowed_roles": [
+        "engineer"
+      ],
+      "clearance_rank": 2,
+      "rrf_score": 0.3333333333333333,
+      "rerank_score": 2.347712516784668
+    },
+    {
+      "document_id": "ops-001",
+      "chunk_id": "ops-001-c001",
+      "title": "数据库连接池 ERR_GATEWAY_502_DB 排查手册",
+      "content": "# 数据库连接池 ERR_GATEWAY_502_DB 排查手册\n\n本文属于虚构企业演示数据。ERR_GATEWAY_502_DB 表示网关等待数据库连接超时。典型表现为接口间歇返回 502，连接池等待队列持续增加；这不等同于数据库密码错误。\n\n先检查连接池 active、idle 和 pending 指标，再检查慢事务及未释放连接。优先终止已确认的异常长事务，并回滚最近引入的连接泄漏代码。直接扩大连接池可能进一步压垮数据库，应在容量确认后执行。",
+      "score": -2.3435301780700684,
+      "retrieval_mode": "hybrid_rerank",
+      "clearance_level": "internal",
+      "source": "data/mock_docs/ops-001.md",
+      "tenant_id": "aster-demo",
+      "department": "engineering",
+      "allowed_roles": [
+        "engineer"
+      ],
+      "clearance_rank": 2,
+      "rrf_score": 0.5,
+      "rerank_score": -2.3435301780700684
+    },
+    {
+      "document_id": "ops-003",
+      "chunk_id": "ops-003-c001",
+      "title": "缓存热点击穿处置手册",
+      "content": "# 缓存热点击穿处置手册\n\n本文属于虚构企业演示数据。热门商品缓存过期后，请求会同时回源数据库，表现为数据库读取陡增而缓存命中率骤降。\n\n采用单请求重建机制，让一个请求刷新缓存，其他请求短暂等待或读取可接受的旧值。对热点键提前刷新，并给过期时间加入随机抖动。不要让全部请求并发执行相同重建查询。",
+      "score": -4.771292209625244,
+      "retrieval_mode": "hybrid_rerank",
+      "clearance_level": "internal",
+      "source": "data/mock_docs/ops-003.md",
+      "tenant_id": "aster-demo",
+      "department": "engineering",
+      "allowed_roles": [
+        "engineer"
+      ],
+      "clearance_rank": 2,
+      "rrf_score": 0.25,
+      "rerank_score": -4.771292209625244
+    }
+  ],
+  "warning": null
+}

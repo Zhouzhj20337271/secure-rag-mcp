@@ -1,6 +1,6 @@
 # SecureRAG-MCP
 
-这是一个本地安全混合检索服务项目。项目使用 Qdrant Local 在同一集合中保存 Dense、BM25 Sparse 和权限元数据，通过检索前过滤限制候选范围，并使用官方 MCP Python SDK 暴露标准工具。
+面向简历与技术面试演示的本地安全混合检索服务。项目使用 Qdrant Local 在同一集合中保存 Dense、BM25 Sparse 和权限元数据，通过检索前过滤限制候选范围，并使用官方 MCP Python SDK 暴露标准工具。
 
 > 当前语料、公司、制度、型号、错误码含义和金额均为合成演示数据。共享集合上的元数据过滤不等于物理隔离，也不代表生产级 IAM。
 
@@ -104,7 +104,7 @@ $env:SECURERAG_RERANK_ENABLED="true"
 
 同日完成 P1-B：将评测集扩展到 48 题，其中 36 条正例覆盖困难干扰与双文档比较，12 条用于越权边界。`BAAI/bge-reranker-base` 对已授权的 RRF Top 15 候选重排后，Hit@1 从 Hybrid RRF 的 0.917 提升至 1.000，MRR@5 从 0.958 提升至 1.000，nDCG@5 从 0.969 提升至 1.000；12 条越权题在四种模式中共检查 148 个返回候选，未授权候选为 0。详见 [`reports/p1_final.md`](reports/p1_final.md)。
 
-MCP Tool schema、stdio 调用和服务端身份绑定已在 P0 使用官方客户端验证。本轮 Codex 沙箱内复跑子进程 stdio 时停在握手阶段，因此未将该次尝试记录为通过；证据与边界见 [`reports/mcp_evidence.md`](reports/mcp_evidence.md)。
+MCP Tool schema、stdio 调用和服务端身份绑定已使用官方客户端验证，并在普通 PowerShell 中完成 P1 环境复跑。修正首次 Inspector 配置后，工程师困难题与实习生越权题均以 `hybrid_rerank` 执行、无降级警告，并已归档请求界面与完整响应；详见 [`reports/mcp_evidence.md`](reports/mcp_evidence.md)。
 
 ## 当前边界
 
