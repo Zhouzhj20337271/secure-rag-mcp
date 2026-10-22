@@ -1,0 +1,44 @@
+# Synthetic local demonstration identities. This file implements no authentication.
+# The server operator chooses one identity at process startup.
+# Every principal has the employee role; shared documents still require same tenant.
+principals:
+  intern-demo:
+    tenant_id: aster-demo
+    department: engineering
+    roles: [employee, intern]
+    max_clearance_rank: 1
+  engineer-demo:
+    tenant_id: aster-demo
+    department: engineering
+    roles: [employee, engineer]
+    max_clearance_rank: 2
+  hr-demo:
+    tenant_id: aster-demo
+    department: hr
+    roles: [employee, hr]
+    max_clearance_rank: 2
+  finance-demo:
+    tenant_id: aster-demo
+    department: finance
+    roles: [employee, finance]
+    max_clearance_rank: 2
+  finance-manager-demo:
+    tenant_id: aster-demo
+    department: finance
+    roles: [employee, finance, finance_manager]
+    max_clearance_rank: 3
+  executive-demo:
+    tenant_id: aster-demo
+    department: executive
+    roles: [employee, executive]
+    max_clearance_rank: 3
+  finance-role-probe-demo:
+    tenant_id: aster-demo
+    department: finance
+    roles: [employee, finance]
+    max_clearance_rank: 3
+  other-engineer-demo:
+    tenant_id: boreal-demo
+    department: engineering
+    roles: [employee, engineer]
+    max_clearance_rank: 2
